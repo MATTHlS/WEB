@@ -23,8 +23,9 @@ class User{
         $this->connexion->prepare($sql);
         $this->connexion->execute();
         $result = $this->connexion->single();
-        if(!empty($result) && password_verify($password, $result['password']))
+        if(!empty($result) && password_verify($password, $result['password'])){
             return $result;
+        }
         return FALSE;
     }
 
@@ -38,7 +39,7 @@ class User{
     }
 
     public function register($data){
-        $sql = "INSERT INTO users(username, email, password, role) VALUES ('" . $data['username'] . "', '" . $data['email']. "', '" . $hash . "', '" . $data['role'] . "')";
+        $sql = "INSERT INTO users(username, email, password, role) VALUES ('" . $data['username'] . "', '" . $data['email']. "', '" . $data['password'] . "', '" . $data['role'] . "')";
         $this->connexion->prepare($sql);
         $this->connexion->execute();
     }

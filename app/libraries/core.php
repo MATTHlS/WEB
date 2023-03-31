@@ -8,10 +8,8 @@ class Core{
 
     public function __construct(){
         $url = $this->getUrl();
-        echo "bonjour";
         $controller = ucfirst($url[0]);
         $this->currentController = new $controller();
-
         
         unset($url[0]);
         $this->currentMethod = $url[1];

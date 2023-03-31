@@ -1,22 +1,15 @@
-<?php
-session_start();
-require "/var/www/monsite.fr/app/controllers/Users.php";
-/*
-if(empty($_POST['submit'])){
-    $users = new Users();
-    $users->login();
-}*/
-?>
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/var/www/monsite.fr/public/static/css/style.css">
+        <style>
+            <?php include './static/css/style.php'; ?>
+        </style>
     </head>
     <body>
         <h1>Bienvenue sur mon site</h1>
 
         <?php
-            if(empty($_SESSION['username'])){
+            if(!isLoggedIn()){
         ?>
 
         <div id="register_box">
@@ -35,15 +28,7 @@ if(empty($_POST['submit'])){
         </div>
 
         <?php
-        } else {
-            session_start();
-            echo '<h3>' . $_SESSION['message'] .'</h3>';
-        ?>
-            <a href="logout.php" class="button">Logout</a>
-
-        <?php
-        }
-
+        } 
         ?>
     </body>
 </html>
